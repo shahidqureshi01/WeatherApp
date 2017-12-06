@@ -1,18 +1,34 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+
+  fetchData = (name) => {
+    const key = '687ffee217080389caa42809f747df91'
+    fetch(
+      `http://api.openweathermap.org/data/2.5/forecast?q=London,GB&appid=${key}`)
+    .then(response => { 
+      if(response.ok) {
+        response.json().then(data => {
+          console.log('data: ', data)
+        })
+      } 
+    })
+  }
+
+  componentDidMount() {
+    this.fetchData()
+  }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">Your 3 Hourly Forecast for next 5 days</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div className="App-intro">
+          
+        </div>
       </div>
     );
   }
