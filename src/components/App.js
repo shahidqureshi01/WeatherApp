@@ -8,7 +8,8 @@ class App extends Component {
     super(props)
     this.state = {
       data: '',
-      days: []
+      days: [],
+      currentDay: new Date().toLocaleString('en-gb', {  weekday: 'long' })
     }
   }
 
@@ -49,7 +50,15 @@ class App extends Component {
 
   render() {
     const { data, days } = this.state
+    const { currentDay } = this.state
+    console.log('currentDay', currentDay)
+    const time = Date.now()
     const today = new Date().toLocaleString('en-gb', {  weekday: 'long' })
+    const dayTwo = new Date(time + (60 * 60 * 24 * 1000)).toLocaleString('en-gb', {  weekday: 'long' })
+    const dayThree = new Date(time + (60 * 60 * 48 * 1000)).toLocaleString('en-gb', {  weekday: 'long' })
+    const dayFour = new Date(time + (60 * 60 * 72 * 1000)).toLocaleString('en-gb', {  weekday: 'long' })
+    const dayFive = new Date(time + (60 * 60 * 96 * 1000)).toLocaleString('en-gb', {  weekday: 'long' })
+    
     if(data !== '') {
       return (
         <div className="App">
@@ -59,10 +68,10 @@ class App extends Component {
           </header>
           <ul>
             <li>{today}</li>
-            <li>Friday</li>
-            <li>Saturday</li>
-            <li>Sunday</li>
-            <li>Monday</li>
+            <li>{dayTwo}</li>
+            <li>{dayThree}</li>
+            <li>{dayFour}</li>
+            <li>{dayFive}</li>
           </ul>
           <div className="App-intro">
             <Forecast data={days[today]}/>
