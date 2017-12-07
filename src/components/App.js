@@ -48,6 +48,11 @@ class App extends Component {
     this.fetchData()
   }
 
+  handleClick = (day) => {
+    //console.log(day)
+    this.setState({currentDay: day})
+  }
+
   render() {
     const { data, days } = this.state
     const { currentDay } = this.state
@@ -67,14 +72,14 @@ class App extends Component {
             <h4 className="App-title">Your 3 Hourly Forecast for next 5 days</h4>
           </header>
           <ul>
-            <li>{today}</li>
-            <li>{dayTwo}</li>
-            <li>{dayThree}</li>
-            <li>{dayFour}</li>
-            <li>{dayFive}</li>
+            <li onClick={(e) => {this.handleClick(today)}}>{today}</li>
+            <li onClick={(e) => {this.handleClick(dayTwo)}}>{dayTwo}</li>
+            <li onClick={(e) => {this.handleClick(dayThree)}}>{dayThree}</li>
+            <li onClick={(e) => {this.handleClick(dayFour)}}>{dayFour}</li>
+            <li onClick={(e) => {this.handleClick(dayFive)}}>{dayFive}</li>
           </ul>
           <div className="App-intro">
-            <Forecast data={days[today]}/>
+            <Forecast data={days[currentDay]}/>
           </div>
         </div>
       );
