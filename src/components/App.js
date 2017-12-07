@@ -57,8 +57,8 @@ class App extends Component {
             <h1 className="App-title">Your 3 Hourly Forecast for next 5 days</h1>
           </header>
           <div className="App-intro">
+            <div><h2>{data.city.name}, {data.city.country}</h2></div>
             <Forecast data={days[today]}/>
-            <p>{console.log('wee', days[today])}</p>
           </div>
         </div>
       );
