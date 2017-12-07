@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
+import Forecast from './Forecast'
 
 class App extends Component {
 
@@ -37,7 +38,7 @@ class App extends Component {
             <h1 className="App-title">Your 3 Hourly Forecast for next 5 days</h1>
           </header>
           <div className="App-intro">
-            <p>{JSON.stringify(data)}</p>
+            <Forecast />
           </div>
         </div>
       );
